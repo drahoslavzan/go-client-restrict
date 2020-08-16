@@ -19,7 +19,6 @@ func ClientRestrictMiddleware(allowedIP string) func(http.Handler) http.Handler 
 				return
 			}
 
-			log.Printf("remote IP %s", remoteIP)
 			next.ServeHTTP(w, r)
 		})
 	}
