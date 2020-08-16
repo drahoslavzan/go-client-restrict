@@ -11,7 +11,7 @@ import (
 func ClientRestrictMiddleware(allowedIP string) func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			remoteIP := getRemoteIP(r)
+			remoteIP := GetRemoteIP(r)
 
 			if remoteIP != allowedIP {
 				log.Printf("remote IP %s not allowed (%s)", remoteIP, allowedIP)
@@ -25,7 +25,8 @@ func ClientRestrictMiddleware(allowedIP string) func(http.Handler) http.Handler 
 	}
 }
 
-func getRemoteIP(r *http.Request) string {
+// GetRemoteIP returns host's IP address
+func GetRemoteIP(r *http.Request) string {
 	remoteIP := ""
 	if parts := strings.Split(r.RemoteAddr, ":"); len(parts) == 2 {
 		remoteIP = parts[0]
