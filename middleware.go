@@ -1,4 +1,4 @@
-package goclnrestrict
+package clnrestrict
 
 import (
 	"log"
