@@ -1,4 +1,4 @@
-package clnrestrict
+package go-client-restrict
 
 import (
 	"log"
